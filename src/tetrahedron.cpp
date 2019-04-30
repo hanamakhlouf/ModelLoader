@@ -1,4 +1,10 @@
-#include "Tetrahedron.h"
+/** @file
+* This file stores the tetrahedron data. Child class of the cell
+*/
+/** Brief description
+* Allows the volume, weight and centre to be calculated
+*/
+#include "tetrahedron.h"
 
 //calculate the volume of this cell
 //execute one time of vector calculation

@@ -1,0 +1,38 @@
+# .travis.yml
+sudo: required
+language: cpp
+
+
+branches:
+  except:
+    - gh-pages
+    
+env:
+  global:
+    - GH_REPO_NAME: ModelLoader
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_REF: github.com/edwardpercy/ModelLoader.git
+    
+addons:
+  apt:
+    packages:
+      - doxygen
+      - graphviz
+
+    
+
+
+# Build your code
+script:
+  - doxygen Doxyfile
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
+  - cd Automated_testing
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - make test
+  
+

@@ -1,4 +1,11 @@
-#include "Hexahedron.h"
+/** @file
+* This file is a child class of cell
+*/
+/** Brief description
+* It can calculate the volume, weight and centre
+*/
+
+#include "hexahedron.h"
 
 //calculate the volume of this cell
 //a pyramid can be spilted into six tetrahedrons

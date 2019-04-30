@@ -1,4 +1,10 @@
-#include "Material.h"
+/** @file
+* Stores the material data for the cell
+*/
+/** Brief description
+* stores the ID, density, name and hex colour for the material
+*/
+#include "material.h"
 
 //Create Material with Default Value
 Material::Material()

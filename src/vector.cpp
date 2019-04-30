@@ -1,4 +1,10 @@
-﻿//
+﻿/** @file
+* This file stores the vertices data for the model
+*/
+/** Brief description
+* Handles vectors. Has functions such as subtract, add and multiply
+*/
+//
 //  vector.cpp
 //  vector
 //
@@ -7,7 +13,7 @@
 //
 
 #include <iostream>
-#include "Vector.h"
+#include "vector.h"
 #include <vector> 
 using namespace std;
 

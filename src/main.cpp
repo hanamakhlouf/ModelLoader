@@ -1,10 +1,16 @@
 // main.cpp-------------------------------------------------------------------
-
-#include "Main.h"
+/** @file
+* This file starts the program
+*/
+/** Brief description
+* Initiates QT and opens the main window
+*/
+#include "main.h"
 
 int main( int argc, char** argv )
 {
-
+		
+	
 
     //Initiate QT stuff
 

@@ -1,7 +1,14 @@
-#include "Model.h"
+/** @file
+* This file is the main model loader and has functionality to save
+*/
+/** Brief description
+* Passes all of the model data to each of the respected classes 
+*/
+#include "model.h"
 #include <vector>
-Model::Model(string FileName) { //Model class constructor
-	LoadModel(FileName);
+#include <cstring>
+Model::Model() { //Model class constructor
+	//LoadModel(FileName);
 }
 Model::~Model() {
 	//Clears all the vector lists from memory
@@ -12,14 +19,22 @@ Model::~Model() {
 	Tetrahedrons.clear();
 	Hexahedrons.clear();
 }
-void Model::SaveModel(void) {
-	cout << "Saving..." << endl;
-	std::ofstream outfile("Model.mod");
-	
+
+void Model::SaveModel(string FileName,string Hexstring) {
+        cout << "Saving to "<< FileName << endl;
+        std::ofstream outfile(FileName);
+        if (Hexstring == ""){
 	//Write materials
 	for (int m = 0; m < Materials.size(); m++) {
 		outfile << "m " << Materials[m].getMatID() << " " << Materials[m].getDensity() << " " << Materials[m].getColour() << " " << Materials[m].getName() << endl;
 	}
+        }
+        else{
+
+            for (int m = 0; m < Materials.size(); m++) {
+                    outfile << "m " << Materials[m].getMatID() << " " << Materials[m].getDensity() << " " << Hexstring << " " << Materials[m].getName() << endl;
+            }
+        }
 
 	//Write Vectors
 	for (int v = 0; v < Vertices.size(); v++) {
@@ -44,6 +59,7 @@ void Model::SaveModel(void) {
 	}
 	
 	cout << "Finished Saving to Model.mod" << endl;
+
 
 }
 void Model::LoadModel(string FileName) { //Loads the model
@@ -222,7 +238,7 @@ vector<float> Model::GetMaterialColour(int ID) { //Gets the material data from t
         RGB.clear();
         string hex = Materials[ID].getColour();
         char *cstr = new char[hex.length() + 1];
-        strcpy(cstr, hex.c_str());
+        std::strcpy(cstr, hex.c_str());
 
         int r, g, b;
         sscanf(cstr, "%02x%02x%02x", &r, &g, &b);
